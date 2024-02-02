@@ -1,0 +1,80 @@
+{% extends "base2.html" %} {% block main_content %}
+
+<div class="row mt-4 pt-2">
+  <div class="col-md-12"><h1>this is product list table view...</h1></div>
+</div>
+
+<div class="row mt-4 pt-2">
+  <div class="col-md-4">
+    <a
+      class="btn btn-outline-dark btn-icon-text"
+      href="{% url 'products_add' %}"
+    >
+      <i class="mdi mdi mdi mdi-cart-plus btn-icon-prepend mdi-36px"></i>
+      <span class="d-inline-block text-left">
+        <small class="font-weight-light d-block">New Product</small> Create
+      </span>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-outline-info btn-icon-text">
+      <i class="mdi mdi mdi-eye btn-icon-prepend mdi-36px"></i>
+      <span class="d-inline-block text-left">
+        <small class="font-weight-light d-block">Click to view</small> CATEGORY
+      </span>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-outline-success btn-icon-text">
+      <i class="mdi mdi mdi-folder-plus btn-icon-prepend mdi-36px"></i>
+      <span class="d-inline-block text-left">
+        <small class="font-weight-light d-block">New Category</small> Create
+      </span>
+    </button>
+  </div>
+</div>
+
+<div class="row mt-4 pt-2">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Products List</h4>
+        <p class="card-description">Add class <code>.table-striped</code></p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>category</th>
+              <th>Code</th>
+              <th>Sale Price</th>
+              <th>Purchase Price</th>
+              <th>Date</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+            <tr>
+              <td class="py-1">
+                <a href="{% url 'product_detail' product.id %}">
+                  <img src="{{ product.image.url }}" alt="image" />
+                </a>
+              </td>
+              <td>{{ product.product_name }}</td>
+              <td>{{ product.product_category }}</td>
+              <td>{{ product.product_code }}</td>
+              <td>Rs. {{ product.sale_price }}</td>
+              <td>Rs. {{ product.my_cost }}</td>
+              <td>{{ product.created_at.date }}</td>
+              <td>{{ product.created_at.time }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main_content %}

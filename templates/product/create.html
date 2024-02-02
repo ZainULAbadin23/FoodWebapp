@@ -1,0 +1,82 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block main_content %}
+<!-- Add Product form -->
+
+<div class="row">
+  <div class="col-12">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-12">
+          {% for error in errors %}
+          <p>{{error}}</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="card card-danger">
+        <div class="card-header">
+          <h3 class="card-title">Product Form</h3>
+        </div>
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-4">
+              <label for="">Product Code</label>
+              {{form.product_code}}
+            </div>
+            <div class="col-3">
+              <label for="">Category</label>
+              {{form.product_category}}
+            </div>
+            <div class="col-5">
+              <label for="">Product Name</label>
+              {{form.product_name}}
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-4">
+                <label for="">Product Image</label>
+                {{form.image.url}}
+              </div>
+            <div class="col-4">
+              <label for="">Purchase Price</label>
+              {{form.my_cost}}
+            </div>
+
+            <div class="col-4">
+              <label for="">Sale Price</label>
+              {{form.sale_price}}
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <label for="">Description</label>
+              {{form.description}}
+            </div>
+            <div class="col-3"></div>
+          </div>
+
+
+          <div class="row mb-2">
+            <div class="col-4"></div>
+            <div class="col-4">
+              <button
+                type="submit"
+                class="btn btn-block bg-gradient-info btn-lg"
+              >
+                Add Product
+              </button>
+            </div>
+            <div class="col-4"></div>
+          </div>
+        </div>
+
+        <!-- /.card-body -->
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock main_content %}

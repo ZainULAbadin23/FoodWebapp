@@ -1,0 +1,176 @@
+{% extends "base2.html" %} {% block main_content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>{{ product.product_name }}</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4 class="card-title mb-0">
+                Product Code: {{ product.product_code }}
+              </h4>
+              <div class="dropdown dropdown-arrow-none">
+                <button
+                  class="btn p-0 text-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuIconButton1"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="mdi mdi-dots-vertical"></i>
+                </button>
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  aria-labelledby="dropdownMenuIconButton1"
+                >
+                  <h6 class="dropdown-header">Settings</h6>
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 grid-margin grid-margin-lg-0">
+            <div class="wrapper pb-5 border-bottom">
+              <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                  <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                  <div class=""></div>
+                </div>
+              </div>
+              <div
+                class="text-wrapper d-flex align-items-center justify-content-between mb-2"
+              >
+                <p class="mb-0 text-dark">Sale Price</p>
+                <span class="text-success"
+                  ><i class="mdi mdi-arrow-up"></i>2.95%</span
+                >
+              </div>
+              <h3 class="mb-0 text-dark font-weight-bold">
+                Rs. {{ product.sale_price }}
+              </h3>
+              <img
+                src="{{ product.image.url }}"
+                width="360"
+                height="180"
+                style="display: block; height: auto; width: 180px"
+              />
+            </div>
+            <div class="wrapper pt-5">
+              <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                  <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                  <div class=""></div>
+                </div>
+              </div>
+              <div
+                class="text-wrapper d-flex align-items-center justify-content-between mb-2"
+              >
+                <p class="mb-0 text-dark">My Cost</p>
+                <span class="text-success"
+                  ><i class="mdi mdi-arrow-up"></i>52.95%</span
+                >
+              </div>
+              <h3 class="mb-4 text-dark font-weight-bold">
+                Rs. {{ product.my_cost }}
+              </h3>
+              <p> {{ product.description }} </p>
+            </div>
+          </div>
+          <div class="col-lg-9 col-sm-8 grid-margin grid-margin-lg-0">
+            <div class="pl-0 pl-lg-4">
+              <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                  <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                  <div class=""></div>
+                </div>
+              </div>
+              <div
+                class="d-xl-flex justify-content-between align-items-center mb-2"
+              >
+                <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">
+                  <h3 class="text-dark font-weight-bold mr-2 mb-0">
+                    {{ product.product_name }}
+                  </h3>
+                  <h5 class="mb-0">( more details )</h5>
+                </div>
+                <div class="d-lg-flex">
+                  <p class="mr-2 mb-0">Product added on:</p>
+                  <p class="text-dark font-weight-bold mb-0">
+                    {{ product.created_at }}
+                  </p>
+                </div>
+              </div>
+              <div
+                class="graph-custom-legend clearfix"
+                id="device-sales-legend"
+              >
+                <ul class="2-legend">
+                  <li>
+                    <span class="legend-box" style="background: #a461d8"></span
+                    ><span class="legend-label text-dark">Edit</span>
+                  </li>
+                  <li>
+                    <span class="legend-box" style="background: #fc5a5a"></span
+                    ><span class="legend-label text-dark">Delete</span>
+                  </li>
+                </ul>
+              </div>
+                <table
+                width="1106"
+                height="552"
+                style="display: block; height: auto; width: max-content;"
+                class="table table-striped"
+              >
+                <thead>
+                    <tr>
+                    <th>owner</th>
+                    <th>category</th>
+                    <th>Status</th>
+                    <th>Unit</th>
+                    <th>total Sold</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                    <td>{{ product.product_added_by }}</td>
+                    <td> {{ product.product_category }} </td>
+                    {% if product.is_active == True %}
+                    <td>Ative to Sale</td>
+                    {% else %}
+                    <td>Inactive in List</td>
+                    {% endif %}
+                    <td> {{ product.p_unit }} </td>
+                    <td>50</td>
+                    </tr>
+                    
+                </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main_content %}

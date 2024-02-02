@@ -1,0 +1,9 @@
+asgiref==3.7.2
+Babel==2.14.0
+Django==5.0.1
+django-active-link==0.1.8
+django-phonenumber-field==7.3.0
+django-simple-history==3.4.0
+phonenumbers==8.13.27
+pillow==10.2.0
+sqlparse==0.4.4
